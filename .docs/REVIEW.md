@@ -5,17 +5,17 @@ Rules for implementing and reviewing the WebChange Detector MainWP add-on. Archi
 ## Paths & deployment boundary
 
 - **Working copy (edit here):** `/Users/mike/htdocs/wcd/mainwp/app/public/wp-content/plugins/webchangedetector-for-mainwp/`.
-- **NEVER edit** `/Users/mike/htdocs/wcd/wp-repo-mainwp/`: it is the generated wordpress.org distribution, produced by `.claude/bin/build-release.sh` (private wcd-ops repo; rsync minus `.distignore`). Any change there is overwritten on the next build.
+- **NEVER edit** `/Users/mike/htdocs/wcd/wp-repo-mainwp/`: it is the generated wordpress.org distribution, produced by `.claude/bin/deploy-mainwp-to-wp-svn.sh` (private wcd-ops repo; rsync minus `.distignore`). Any change there is overwritten on the next build.
 
 ## Release & versioning
 
 - **Version is derived from the plugin header, single source.** `WCD_MAINWP_VERSION` is computed
   from the `Version:` header of `webchangedetector-for-mainwp.php` via `get_file_data()`. Never
   reintroduce a hardcoded `define( 'WCD_MAINWP_VERSION', 'X.Y.Z' )` literal. For a stable
-  wordpress.org release three places must match (enforced by `.claude/bin/build-release.sh` in the
+  wordpress.org release three places must match (enforced by `.claude/bin/deploy-mainwp-to-wp-svn.sh` in the
   private wcd-ops repo): the `Version:` header, `readme.txt` `Stable tag:`, and the latest
   `= X.Y.Z =` changelog entry.
-- **Two channels.** wordpress.org SVN (stable, customers) via `.claude/bin/build-release.sh`; GitHub +
+- **Two channels.** wordpress.org SVN (stable, customers) via `.claude/bin/deploy-mainwp-to-wp-svn.sh`; GitHub +
   Git Updater (dev/beta, opt-in sites) via `.claude/bin/wcd-release.sh mainwp` + `.github/workflows/release.yml`.
   Both release scripts live in the private wcd-ops repo (`/Users/mike/htdocs/wcd/.claude/bin/`), not
   in this public repo.
