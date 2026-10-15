@@ -93,8 +93,8 @@ defined( 'ABSPATH' ) || exit;
 
 					<div class="field">
 						<label for="wcd-set-delay"><?php esc_html_e( 'Screenshot delay (seconds)', 'webchangedetector-for-mainwp' ); ?></label>
-						<input type="number" id="wcd-set-delay" name="screenshot_delay" min="7" max="60" />
-						<small class="wcd-muted"><?php esc_html_e( 'Extra wait before each screenshot (7 to 60 seconds). Leave blank for the default.', 'webchangedetector-for-mainwp' ); ?></small>
+						<input type="number" id="wcd-set-delay" name="screenshot_delay" min="10" max="60" />
+						<small class="wcd-muted"><?php esc_html_e( 'Delay between screenshot starts to reduce server load. Minimum 10 seconds, maximum 60 seconds (default 10 seconds). Leave blank to keep the current value.', 'webchangedetector-for-mainwp' ); ?></small>
 					</div>
 
 					<div class="field">
