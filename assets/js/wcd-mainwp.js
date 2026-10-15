@@ -586,7 +586,12 @@
         setPasswordSetState(modal, !!data.has_basic_auth);
         setCheckbox(settingsField(modal, 'proxy_on'), data.proxy_on);
         var delay = settingsField(modal, 'screenshot_delay');
-        if (delay) { delay.value = (data.screenshot_delay !== undefined && data.screenshot_delay !== null) ? data.screenshot_delay : ''; }
+        if (delay) {
+            // Show the value the API actually applies: old groups can still store 7 to 9, but
+            // anything below 10 runs as 10.
+            var delayValue = parseInt(data.screenshot_delay, 10);
+            delay.value = isNaN(delayValue) ? '' : Math.max(10, delayValue);
+        }
         var css = settingsField(modal, 'css');
         if (css) { css.value = data.css || ''; }
         var js = settingsField(modal, 'js');
