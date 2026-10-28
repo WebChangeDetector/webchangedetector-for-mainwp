@@ -458,8 +458,8 @@ class WCD_MainWP_Ajax {
 	 * - basic_auth_user: present => write it; absent => leave unchanged. Stored verbatim (only
 	 *   unslashed) so credentials are not altered by sanitizing.
 	 * - proxy_type: 'static' when on, 'none' when off (never '').
-	 * - screenshot_delay: integer clamped 10-60, or omitted when the field is left empty. The API
-	 *   still accepts 7-60 and applies anything below 10 as 10; we send the effective minimum.
+	 * - screenshot_delay: integer clamped 10-120, or omitted when the field is left empty. The API
+	 *   still accepts 7-120 and applies anything below 10 as 10; we send the effective minimum.
 	 * - threshold: float, or omitted when the field is left empty (an empty field must never be
 	 *   written as 0, which would make every pixel difference count as a change).
 	 * - alert_emails: present => written as an array (an empty field sends [] and clears the list,
@@ -510,10 +510,10 @@ class WCD_MainWP_Ajax {
 			$fields['alert_emails'] = array_values( array_filter( array_map( 'trim', $emails ) ) );
 		}
 
-		// screenshot_delay: empty leaves it unchanged (omit the key); a value is clamped 10-60.
+		// screenshot_delay: empty leaves it unchanged (omit the key); a value is clamped 10-120.
 		$delay_raw = isset( $_POST['screenshot_delay'] ) ? trim( sanitize_text_field( wp_unslash( $_POST['screenshot_delay'] ) ) ) : '';
 		if ( '' !== $delay_raw ) {
-			$fields['screenshot_delay'] = max( 10, min( 60, (int) $delay_raw ) );
+			$fields['screenshot_delay'] = max( 10, min( 120, (int) $delay_raw ) );
 		}
 
 		// css / js are stored verbatim (the API/webapp keep them as-is). Only unslash; do not strip

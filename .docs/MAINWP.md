@@ -444,7 +444,7 @@ The four tab bodies:
     the account email at group creation).
   - Advanced (a collapsible Fomantic `ui accordion`): **Basic Auth** username (`basic_auth_user`) +
     password (`basic_auth_password`), **Static IP proxy** toggle (`proxy_type`), **Screenshot delay**
-    (`screenshot_delay`, the delay between screenshot starts, 10 to 60 seconds, blank keeps the
+    (`screenshot_delay`, the delay between screenshot starts, 10 to 120 seconds, blank keeps the
     current value; a stored value below 10 from an older group is shown as 10, matching the API,
     which applies it as 10), **CSS injection** (`css`), **JS injection** (`js`).
   - Excluded on purpose: website name, all monitoring/schedule fields, all WP-plugin settings.
@@ -455,7 +455,7 @@ The four tab bodies:
   and persists it via `WCD_MainWP_Site_Map::set_region()`. The API owns sibling-sync and resolving
   `auto` to a concrete region, so the addon does not loop or poll. Per-field contract (the API writes
   a field only when present in the request): `proxy_type` is `static` when on / `none` when off (never
-  `''`); `screenshot_delay` is clamped 10 to 60, or the key is omitted when the field is empty;
+  `''`); `screenshot_delay` is clamped 10 to 120, or the key is omitted when the field is empty;
   `threshold` is a float, or the key is omitted when the field is empty (an emptied field must never
   be written as `0`, which would make every pixel difference count as a change);
   `basic_auth_password` is **present => write it** (non-empty SETs, empty string CLEARs) or **absent
