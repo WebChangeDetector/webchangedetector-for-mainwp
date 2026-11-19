@@ -114,6 +114,9 @@ No. Only updates you start with one of the plugin's own "with Checks" buttons ar
 
 == Changelog ==
 
+= 1.1.3 =
+* Improvement: The screenshot delay in the per-site check settings can now be set up to 180 seconds (before 60). Minimum and default stay at 10 seconds.
+
 = 1.1.2 =
 * Improvement: The screenshot delay in the per-site check settings now has a minimum of 10 seconds, and the default is 10 seconds. A lower delay saved earlier is shown as 10 seconds, and the field now explains what the delay does.
 
@@ -146,6 +149,9 @@ No. Only updates you start with one of the plugin's own "with Checks" buttons ar
 * Initial release: safe-update flow (pre/post screenshots around MainWP updates), Visual Checks overview, dashboard widget, per-site URL selection, auto-enable for new sites, automatic cache clearing on child sites before pre-update screenshots and after updates.
 
 == Upgrade Notice ==
+
+= 1.1.3 =
+The screenshot delay in the per-site check settings can now be set up to 180 seconds.
 
 = 1.1.2 =
 The screenshot delay in the per-site check settings now has a minimum and default of 10 seconds.
